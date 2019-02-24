@@ -43,7 +43,7 @@ palindromicFinder/
   
 primeFinder/
 <br />
->^does what it says it does
+>^does what it says it does 
 
  
 
