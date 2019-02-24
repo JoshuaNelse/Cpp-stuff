@@ -44,7 +44,7 @@ palindromicFinder/
 primeFinder/
 <br />
 >^does what it says it does
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  
+
  
 
 
