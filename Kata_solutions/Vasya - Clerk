@@ -1,0 +1,44 @@
+//Vasya - Clerk - https://www.codewars.com/kata/555615a77ebc7c2c8a0000b8
+//
+//The new "Avengers" movie has just been released! There are a lot of people at the cinema box office standing in a huge line. 
+//Each of them has a single 100, 50 or 25 dollars bill. An "Avengers" ticket costs 25 dollars.
+//
+//Vasya is currently working as a clerk. He wants to sell a ticket to every single person in this line.
+//
+//Can Vasya sell a ticket to each person and give the change if he initially has no money and 
+//sells the tickets strictly in the order people follow in the line?
+//
+//Return YES, if Vasya can sell a ticket to each person and give the change with the bills he has at hand at that moment. 
+//Otherwise return NO.
+
+std::string tickets(const std::vector<int> peopleInLine){
+  int t25 = 0;
+  int t50 = 0;
+  int t100 = 0;
+  
+  for (auto control : peopleInLine){
+    switch(control){
+      case 25: t25++; 
+        break;
+        
+      case 50: 
+        if(t25 > 0){
+         t50++;
+         t25--;
+        }  else return "NO";
+        break;
+        
+      case 100:
+        if(t50 > 0 && t25 > 0){
+          t100++;
+          t50--;
+          t25--;
+        } else if(t25 > 2){
+          t100++;
+          t25 -= 3;
+        } else return "NO";
+        break;  
+    }
+  }
+  return "YES";
+}
