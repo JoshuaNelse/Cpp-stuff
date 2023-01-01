@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Player : public combatObject
+class Player
 {
 public:
 	Player();
@@ -19,6 +19,8 @@ public:
 	int expToNextLevel;
 	int coins;
 	int dayCounter;
+    int hp;
+    int maxHP;
 	bool playerDidNotLeave;
 
 	Weapon PlayersWeapon = Weapon("none");
@@ -38,6 +40,8 @@ public:
 	void printAvailableAttacks();
 	void reset_playerDidNotLeave();
 	void playerIsLeaving();
+    
+    string getHPbar();
 
 	bool isValidMove(string);
 };

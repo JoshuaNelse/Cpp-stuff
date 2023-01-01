@@ -148,3 +148,21 @@ void Player::printAvailableAttacks()
 	}
 	cout << "------------------------\n";
 }
+
+string Player::getHPbar()
+{
+    int hpBarLength = this->maxHP > 50 ? 50 : this->maxHP;
+    string hpBarString = "";
+    float hpRemaingingPercent = float(this->hp)/float(this->maxHP);
+    
+    for (int i = 0; i <= hpBarLength ; i++) {
+        
+        auto barRemainingPercent = float(i)/float(hpBarLength);
+        if ( hpRemaingingPercent >= barRemainingPercent ) {
+            hpBarString += "/";
+        } else {
+            hpBarString += " ";
+        }
+    }
+    return "|" + hpBarString + "|";
+}

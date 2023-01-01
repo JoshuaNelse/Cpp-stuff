@@ -16,7 +16,8 @@ Enemy::~Enemy()
 
 void Enemy::generateEnemy()
 {
-	Enemy::type = Enemy::types[Utilities::chooseRandom(Enemy::types.size())];
+    int randoNum = Utilities::chooseRandom(int(Enemy::types.size()));
+	Enemy::type = Enemy::types[randoNum];
 	Enemy::numberOfEnemies = Utilities::chooseRandom(3) + 1;
 	Enemy::hasShield = Utilities::chooseRandom(2);
 }
@@ -37,9 +38,27 @@ int Enemy::getExperienceReward()
 	return this->numberOfEnemies * 25;
 }
 
+string Enemy::getHPbar()
+{
+    int hpBarLength = this->maxHP > 50 ? 50 : this->maxHP;
+    string hpBarString = "";
+    float hpRemaingingPercent = float(this->hp)/float(this->maxHP);
+    
+    for (int i = 0; i <= hpBarLength ; i++) {
+        
+        auto barRemainingPercent = float(i)/float(hpBarLength);
+        if ( hpRemaingingPercent >= barRemainingPercent ) {
+            hpBarString += "/";
+        } else {
+            hpBarString += " ";
+        }
+    }
+    return "|" + hpBarString + "|";
+}
+
 int Enemy::getCoinReward()
 {
-	return this->numberOfEnemies * 10;
+    return this->numberOfEnemies * 10;
 }
 
 

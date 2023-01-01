@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "combatObject.h"
+//#include "combatObject.h"
 
 
 
 using namespace std;
 
-class Enemy : public combatObject
+class Enemy
 {
 public:
 	Enemy();
@@ -15,6 +15,8 @@ public:
 
 	string type;
 	vector<string> types;
+    int hp;
+    int maxHP;
 	int numberOfEnemies;
 	int enemyDamage;
 	bool hasShield;
@@ -25,6 +27,7 @@ public:
 	void setEnemyDamage();
 
 	int getExperienceReward();
+    string getHPbar();
 	int getCoinReward();
 };
 

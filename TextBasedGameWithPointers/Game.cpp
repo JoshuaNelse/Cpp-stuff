@@ -147,7 +147,9 @@ bool Game::handlePlayerInput_lookForEnemyLoop(Game *game, Enemy *enemyToFight, E
 	else if (playerInput == "N")
 	{
 		++(*encounterCounter);
+        foundEnemy = new Enemy();
 		Dialogue::printDialogue("You avoid the possible conflict and head in a different direction.");
+        return true;
 	}
 	else if (playerInput == "Y")
 	{
@@ -162,5 +164,6 @@ bool Game::handlePlayerInput_lookForEnemyLoop(Game *game, Enemy *enemyToFight, E
 			+ Dialogue::pluralCheck(&(*foundEnemy))
 			+ " ran out of sight.");
 		++(*encounterCounter);
+        return false;
 	}
 }

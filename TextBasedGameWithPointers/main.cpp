@@ -52,17 +52,16 @@ bool findBattle(Game* game, Enemy* enemyToFight)
 	bool playerSaysNo = true;
 	while (playerSaysNo)
 	{
-		Enemy foundEnemy = {};
 		Dialogue::printGameMessage("After some time you spot "
-			+ to_string(foundEnemy.numberOfEnemies)
+			+ to_string(enemyToFight->numberOfEnemies)
 			+ " "
-			+ foundEnemy.type
-			+ Dialogue::pluralCheck(&foundEnemy)
+			+ enemyToFight->type
+			+ Dialogue::pluralCheck(enemyToFight)
 			+ ". Do you want to challenge "
-			+ Dialogue::itOrThemCheck(&foundEnemy));
+			+ Dialogue::itOrThemCheck(enemyToFight));
 		Dialogue::printGameMessage("Y or N ?");
 		game->gui.printActionBar();
-		playerSaysNo = game->handlePlayerInput_lookForEnemyLoop(&(*game), &(*enemyToFight), &foundEnemy, &encounterCounter);
+		playerSaysNo = game->handlePlayerInput_lookForEnemyLoop(&(*game), enemyToFight, enemyToFight, &encounterCounter);
 	}
 	return (encounterCounter >= 3 || !game->player.playerDidNotLeave) ? false : true;
 }
